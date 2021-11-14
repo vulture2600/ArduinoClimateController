@@ -54,26 +54,30 @@
 
 #define debug //comment out to disable serial code.
 
-#define tempSetPointEEP      10    //stores temp set point to eeprom location 10.
-#define humSetPointEEP       11    // humidity to 11.
-#define menuEEP              12    //current menu.
-#define fanDurationEEP       13
-#define fanIntervalEEP       14
-#define lightOnTimeEEP       15
-#define lightOffTimeEEP      16
-#define heatEnabledEEP       17
-#define lightEnabledEEP      18
-#define humidifierEnabledEEP 19
-#define fanEnabledEEP        20
 
-#define heaterInterval       10000 // how long heat must be on or off minimum.
-#define sensorReadInterval   3000  //
-#define humidifierInterval   10000 //
-#define sht31heaterInterval  180000 // temp sensor internal heater element timer
-#define sht31heaterDuration  5000  
+//EEPROM locations:
+#define tempSetPointEEP      10    // Temperature set point.
+#define humSetPointEEP       11    // Humidity set point.
+#define menuEEP              12    // Current menu.
+#define fanDurationEEP       13    // Fan duration.
+#define fanIntervalEEP       14    // Fan interval.
+#define lightOnTimeEEP       15    // Light on time.
+#define lightOffTimeEEP      16    // Light off time.
+#define heatEnabledEEP       17    // Heat enable/disable.
+#define lightEnabledEEP      18    // Light enable/disable.
+#define humidifierEnabledEEP 19    // Humidifier enable/disable.
+#define fanEnabledEEP        20    // Fan enable/disable.
 
-#define tempCalibration      -1.6
-  
+#define heaterInterval       10000 // How long heat must be on or off minimum.
+#define sensorReadInterval   3000  // How often to read sensors.
+#define humidifierInterval   10000 // How long humidifier must be on or off minimum.
+#define sht31heaterInterval  180000 // Humiditity/temp sensor internal heater element timer.
+#define sht31heaterDuration  5000   // How long to keep sensor heater on.
+
+#define tempCalibration      -1.6 // For calibrating Humidity/Temp sensor to oneWire sensor.
+
+
+// Pin declarations:
 #define ONE_WIRE_BUS         7
 
 #define relayPinAux          4 //on 3 pin connector
@@ -89,8 +93,9 @@
 #define fanRelay             relayPin3
 #define humidifierRelay      relayPin4
 
-#define menuLimit            9 // sets max number of menu screens
+#define menuLimit            9 // Sets max number of menu screens.
 
+// LCD screen colors:
 #define RED    0x1
 #define YELLOW 0x3
 #define GREEN  0x2
@@ -101,6 +106,7 @@
 
 OneWire oneWire(ONE_WIRE_BUS);
 
+// Hardware object declarations:
 Adafruit_RGBLCDShield lcd = Adafruit_RGBLCDShield();
 Adafruit_SHT31 sht31      = Adafruit_SHT31();
 RTC_PCF8523    rtc;
@@ -110,12 +116,13 @@ bool fanOn                = false;
 bool humidifierOn         = false;
 bool sht31heater          = false;
 
+// Declare booleans and get their saved values at startup:
 bool heatEnabled          = EEPROM.read(heatEnabledEEP);
 bool fanEnabled           = EEPROM.read(fanEnabledEEP);
 bool lightEnabled         = EEPROM.read(fanEnabledEEP);
 bool humidifierEnabled    = EEPROM.read(humidifierEnabledEEP);
 
-
+// Declare some global variables and get their saved values at startup:
 byte     sensor1[8];           // Array to store OneWire device's address.
 int8_t   oneWireTemp      = 0; //temp value of oneWire sensor.
 float    sht31temp        = 0;
@@ -131,6 +138,7 @@ uint8_t  hour;
 uint8_t  minute;
 uint8_t  second;
 
+// Duration timer variables:
 unsigned long timeNow;
 unsigned long heatTimeLast;  
 unsigned long sensorTimeLast;
@@ -172,12 +180,13 @@ void loop() {
   minute       = now.minute();
   second       = now.second();
 
+  // Check to see if any buttons have been pressed and deal with them accordingly:
   uint8_t buttons = lcd.readButtons();
   if (buttons) {
    switch(buttons) {
     case 1: // select:
       switch(menu) {
-        case 1:
+        case 1: // select button in menu 1 currently unassigned.
         break; // end case 1.
 
         case 2: // enable/disable heater:
@@ -217,8 +226,8 @@ void loop() {
 
     case 8: // up:
       switch(menu) {
-        case 1:
-        break;
+        case 1: // up button in menu 1 currently unassigned.
+        break; // end case 1.
         
         case 2: // increases temp setpoint: 
           setPointTemp ++;
@@ -228,7 +237,7 @@ void loop() {
           EEPROM.write(tempSetPointEEP, setPointTemp);
          break; // end case 2.
 
-        case 3: // increase hum setpoint:
+        case 3: // increase humidity setpoint:
           setPointHumidity ++;
           if (setPointHumidity >= 100) {
            setPointHumidity = 100;
@@ -275,8 +284,8 @@ void loop() {
 
     case 4: // down:
       switch(menu) {
-        case 1:
-        break;
+        case 1: // down button in menu 1 currently unassigned.
+        break; 
 
         case 2: // decrease temp setpoint
           setPointTemp --;
