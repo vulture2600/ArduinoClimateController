@@ -1,5 +1,4 @@
-/* Myco Control.
- * Steve.a.mccluskey@gmail.com
+/* Steve.a.mccluskey@gmail.com
  * 
  * Controls up to 5 relays by comparing the temp from a oneWire sensor and a AM2315 temp/humidity sensor.
  * All parameters are user controllable on LCD screen. 
