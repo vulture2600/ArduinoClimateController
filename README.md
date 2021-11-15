@@ -15,3 +15,6 @@ Adafruit RGB LCD shield.
 Arduino Uno proto shield.
 Velleman VMA400 4 channel relay board.
 Various connectors and cables for easy disassembly.
+
+Each of the four channels of the relay are connected to one outlet in the two gang box. Make sure to break the tabs connecting the two outlets so that each outlet
+can be powered individually. Keep the neutral tabs intact.
