@@ -1,5 +1,7 @@
 Arduino Climate Controller
+
 steve.a.mccluskey@gmail.com
+
 Arduino powered climate controller for use with plant or reptile husbandry.
 
 I developed this project to control the climate of an indoor greenhouse. This controller uses 4 relays to control up to 4 AC devices. In my greenhouse, I used a
