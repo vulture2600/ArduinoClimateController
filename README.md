@@ -29,3 +29,7 @@ Various connectors and cables for easy disassembly.
 Each of the four channels of the relay are connected to one outlet in the two gang box. Make sure to break the tabs connecting the two outlets so that each outlet
 can be powered individually. Keep the neutral tabs intact. You will be switching AC loads with this setup. Use at your own risk. Make sure all connections are correct,
 tight, properly grounded, and sufficient to carry applicable loads. A few safety precautions I took were placing a smoke detector in the same room, remote relay enclosure shutoff via a Wyze Smart Plug, a Wyze Camera that detects the sound of a smoke detector, and remote temperature monitoring. The heater I purchased also has a tip switch, so if it's not sitting level on a hard surface, it will not power on. I had the heater set to medium temp and it worked fine. It's very small and meant for under a desk.
+
+Overall this setup worked perfectly for my application. Your results will vary greatly depending on the size of the room, ventilation, wattage of the heater, proximity of the
+heater, and climate requirements. None of the code will handle gradients or learn like a smart thermostat will, but considering I had most of these parts laying around,
+getting something functional was pretty easy. It took about a month to develop and debug.
