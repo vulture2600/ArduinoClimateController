@@ -17,4 +17,5 @@ Velleman VMA400 4 channel relay board.
 Various connectors and cables for easy disassembly.
 
 Each of the four channels of the relay are connected to one outlet in the two gang box. Make sure to break the tabs connecting the two outlets so that each outlet
-can be powered individually. Keep the neutral tabs intact.
+can be powered individually. Keep the neutral tabs intact. You will be switching AC loads with this setup. Use at your own risk. Make sure all connections are correct,
+tight, and properly grounded. 
