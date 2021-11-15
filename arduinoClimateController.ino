@@ -4,7 +4,7 @@
  * All parameters are user controllable on LCD screen. 
  * 
  * Hardware used:
- * Arudino Mega250.
+ * Arudino Mega2560.
  * Dallas OneWire DS18B20 waterproof digital temp sensor.
  * AM2315 I2C digital temperature/humidity sensor.
  * Adafruit PCF8523 I2C real time clock chip.
